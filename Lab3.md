@@ -82,3 +82,10 @@ ___
 #
 > Using the Cloud Console, verify that the app is not deployed. In the Cloud Console, on the Navigation menu (Navigation menu), click App Engine > Dashboard.
 # 4. Disable the application
+> In the Cloud Console, on the Navigation menu (Navigation menu), click App Engine > Settings.
+
+Click Disable application.
+
+Read the dialog message. Enter the App ID and click DISABLE.
+
+If you refresh the browser window you used to view to the application site, you'll get a 404 error.
