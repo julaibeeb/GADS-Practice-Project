@@ -26,12 +26,43 @@ __Steps__
 
 ### 3. Connect between VM instances
 
--Use the ping command to confirm that my-vm-2 can reach my-vm-1 over the network:
+1. Use the ping command to confirm that __my-vm-2__ can reach __my-vm-1__ over the network:
 
--entering in to my-vm-2:
+-entering in to __my-vm-2__:
 ##
     gcloud compute ssh my-vm-2
---ping my-vm-1 from my-vm-2
+--ping __my-vm-1__ from __my-vm-2__
 ##
     ping -c 6 my-vm-1
+--use the ssh command to open a command prompt on __my-vm-1__ from __my-vm-2__
+##
+    ssh my-vm-1
     
+--at the command prompt on __my-vm-1__, install the Nginx web server:
+##
+    sudo apt-get install nginx-light -y
+-- use nano text editor to add a custom message to the home page of the web server:
+##
+    sudo nano /var/www/html/index.nginx-debian.html
+-- at text like this, and replace YOUR_NAME with your name:
+##
+    Hi from Muhammed Garba
+-- exit the editor and confirm that the web server is serving your new page. at the command prompt on my-vm-1, execute this command:
+## 
+    curl http://localhost
+--result:
+>the response will be the html source of the web server's home page, including your line of custom text.
+
+--then exit the command prompt using:
+## 
+    exit
+-- to confirm that __my-vm-2__ can reach the web server on __my-vm-1__, at the command prompt on my-vm-2, execute this command:
+## 
+    curl http://my-vm-1
+
+    
+2. Now get external IP of __my-vm-1__ instance from this command:
+##
+    gcloud compute instances list
+3. Paste the copied IP address of __my-vm-1__ into a new browser tab and hit enter.
+> You will see your web server's home page, including your custom text.
